@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Tumhara exact CSV path daal do
-df = pd.read_csv(r"C:\Users\tehre\my python project\used cars.csv")
+# Load CSV
+df = pd.read_csv("used cars.csv")
 
-# Cleaning
+# Cleaning the Data
 df['price'] = pd.to_numeric(df['price'], errors='coerce')
 df['year'] = pd.to_numeric(df['year'], errors='coerce')
 df['mileage_km'] = pd.to_numeric(df.get('mileage_km', df.get('mileage')), errors='coerce')
@@ -35,4 +35,5 @@ top10['price'] = top10['price'].apply(lambda x: f"₨ {x:,.0f}")
 st.table(top10)
 
 st.success("CONGRATULATIONS! Your first dashboard is LIVE!")
+
 st.balloons()
